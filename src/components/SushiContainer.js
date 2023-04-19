@@ -10,10 +10,13 @@ function SushiContainer({sushis, eatSushi}) {
   .slice(sushiIndex, sushiIndex + 4)
   .map(sushi => <Sushi key={sushi.id} sushi={sushi} eatSushi={eatSushi}/>)
 
+  function addMoreSushi(){
+    setSushiIndex(sushiIndex => sushiIndex + 4)
+  }
   return (
     <div className="belt">
       {renderSushis}
-      <MoreButton />
+      <MoreButton addMoreSushi={addMoreSushi}/>
     </div>
   );
 }
