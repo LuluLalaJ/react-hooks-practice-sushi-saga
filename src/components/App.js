@@ -33,10 +33,14 @@ function App() {
 
   const eatenSushis = sushis.filter(sushi => sushi.eaten)
 
+  function addMoney(amount) {
+    setMoney(money => money + amount)
+  }
+
   return (
     <div className="app">
       <SushiContainer sushis={sushis} eatSushi={eatSushi}/>
-      <Table plates={eatenSushis} money={money}/>
+      <Table plates={eatenSushis} money={money} addMoney={addMoney}/>
     </div>
   );
 }
