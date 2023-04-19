@@ -25,10 +25,12 @@ function App() {
     setSushis(updatedSushis)
   }
 
+  const eatenSushis = sushis.filter(sushi => sushi.eaten)
+
   return (
     <div className="app">
       <SushiContainer sushis={sushis} eatSushi={eatSushi}/>
-      <Table />
+      <Table plates={eatenSushis}/>
     </div>
   );
 }
