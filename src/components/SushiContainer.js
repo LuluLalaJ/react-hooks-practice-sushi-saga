@@ -11,7 +11,8 @@ function SushiContainer({sushis, eatSushi}) {
   .map(sushi => <Sushi key={sushi.id} sushi={sushi} eatSushi={eatSushi}/>)
 
   function addMoreSushi(){
-    setSushiIndex(sushiIndex => sushiIndex + 4)
+    //this is how you do full rotation when it comes to array
+    setSushiIndex(sushiIndex => (sushiIndex + 4) % sushis.length)
   }
   return (
     <div className="belt">
