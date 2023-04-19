@@ -9,13 +9,25 @@ function App() {
   useEffect(()=>{
     fetch(API)
     .then(r => r.json())
-    .then(data => setSushis(data))
+    .then(data => {
+      //adding eaten as a property to the sushi is crucial for tracking
+      const updatedSushis = data.map(sushi => {return {...sushi, eaten: false}})
+      setSushis(updatedSushis)
+    })
   },[])
 
-  const addSomthing = 'add something'
+  function eatSushi(eatenSushi) {
+    const updatedSushis = sushis.map(sushi => {
+      if (sushi.id === eatenSushi.id) {
+        return {...sushi, eaten: true}
+      } return sushi
+    })
+    setSushis(updatedSushis)
+  }
+
   return (
     <div className="app">
-      <SushiContainer sushis={sushis}/>
+      <SushiContainer sushis={sushis} eatSushi={eatSushi}/>
       <Table />
     </div>
   );
